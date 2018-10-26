@@ -17,6 +17,7 @@ var port = parseInt(process.env.NODE_PORT || process.env.PORT || process.argv[2]
 
 
 server.on('request', function(req, res) {
+  console.log('req.query: ', req.query.token);
   res.writeHead(200);
   res.end('Wellcome to troidat.com\n');
 });
