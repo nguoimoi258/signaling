@@ -27,7 +27,7 @@ server.listen(port, function(err) {
     return console.log('Encountered error starting server: ', err);
   }
 
-  console.log('server running at http://localhost' +  + ':' + port + '/');
+  console.log('server running at http://localhost'  + ':' + port + '/');
 });
 
 // add the repl
