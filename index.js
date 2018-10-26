@@ -78,7 +78,7 @@ module.exports = function(server, opts) {
           verifyClient: (info, cb) => {
             console.log("info: ",info)
             let token = info.req.headers.token;
-            console.log("info.req: ",info.req.query.token);
+            console.log("info.req: ",info.req.query);
             if(!token){
                 cb(false,401,'Unauthorized');
             } else {
