@@ -13,7 +13,7 @@ var credentials = {key: privateKey,
 var server = https.createServer(credentials);
 var switchboard = require('./')(server, { servelib: true });
 var port = parseInt(process.env.NODE_PORT || process.env.PORT || process.argv[2], 10) || config.PORT;
-var host = process.env.NODE_HOST || process.env.HOST || 'localhost';
+var host = process.env.NODE_HOST || process.env.HOST;// || 'localhost';
 
 
 server.on('request', function(req, res) {
