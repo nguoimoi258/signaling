@@ -80,9 +80,7 @@ module.exports = function(server, opts) {
             //let token = info.req.headers.token;
 
             let token = info.req.url.split('=')[1];
-            
-            console.log("info.url: ", info.req.url);
-            console.log('token from url', token);
+          
             if(!token){
                 cb(false,401,'Unauthorized');
             } else {
@@ -107,10 +105,10 @@ module.exports = function(server, opts) {
     connections.push(ws);
 
     // Customize
-    ws.on('message', function incoming(message) {
-      console.log('received: %s', message);
-      });
-  
+    // ws.on('message', function incoming(message) {
+    //   console.log('received: %s', message);
+    //   });
+    console.log('new client connect to server');
     ws.send('messeage from server');
     //
 
