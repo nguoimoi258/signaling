@@ -74,7 +74,7 @@ module.exports = function(server, opts) {
   var WebSocketServer = require('ws').Server;
   var wss = new WebSocketServer({ 
           server: server,
-          autoAcceptConnections : false,
+          path: '?token=TOKEN'
           // middleware vertify jwt
         //   verifyClient: (info, cb) => {
         //     console.log("info: ",info)
@@ -97,7 +97,7 @@ module.exports = function(server, opts) {
   
   wss.on('request', function(req) {
     // Parse the requested URL:
-    let url = require('url').parse(req.httpRequest.url);
+    let url = url.parse(request.url).pathname;
     console.log(url);
     // // Assume that the token is passed as path:
     // // ws://url/TOKEN

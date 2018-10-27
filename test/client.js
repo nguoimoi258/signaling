@@ -7,8 +7,8 @@ var WebSocket = require('ws');
 var token = jwt.sign({name: 'iostreamer'}, config.JWT_SECRETKEY, {
     expiresIn: 15 * 24* 60 * 60 * 1000 // 15 days 
 })
-var str = "?token=avsdf";
-var ws = new WebSocket(config.SIGNALING_URL+str, {
+var str = "/path";
+var ws = new WebSocket(config.SIGNALING_URL, {
     headers: {
         token: token
     }
