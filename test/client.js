@@ -7,11 +7,11 @@ var WebSocket = require('ws');
 var token = jwt.sign({name: 'iostreamer'}, config.JWT_SECRETKEY, {
     expiresIn: 15 * 24* 60 * 60 * 1000 // 15 days 
 })
-var str = "/token=TOKEN";
-var ws = new WebSocket(config.SIGNALING_URL+'/token=TOKEN', {
-    headers: {
-        token: token
-    }
+var str = "/token=" + token;
+var ws = new WebSocket(config.SIGNALING_URL+str, {
+    // headers: {
+    //     token: token
+    // }
 });
 
 ws.on('open', function open() {
