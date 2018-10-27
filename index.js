@@ -110,7 +110,10 @@ module.exports = function(server, opts) {
     // return req.accept();
   });
 
-  wss.on('connection', function connection(ws) {
+  wss.on('connection', function connection(request, ws) {
+    let url = url.parse(request.url).pathname;
+    console.log(url);
+
     var peer = board.connect();
 
     // add the socket to the connection list
