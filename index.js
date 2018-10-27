@@ -73,7 +73,7 @@ module.exports = function(server, opts) {
   var connections = [];
   var WebSocketServer = require('ws').Server;
   var wss = new WebSocketServer({ 
-          httpServer: server,
+          server: server,
          
           // middleware vertify jwt
         //   verifyClient: (info, cb) => {
