@@ -8,7 +8,7 @@ var token = jwt.sign({name: 'iostreamer'}, config.JWT_SECRETKEY, {
 })
 var signaling_path = config.SIGNALING_URL +"/token=" + token;
 var signaling_path2 = 'ws://localhost:3000/'
-var signaling_path3 = config.SIGNALING_URL
+var signaling_path3 = config.SIGNALING_URL+'/abc'
 
 quickconnect(signaling_path3, { room: 'switchboard-test' })
   .createDataChannel('test')
