@@ -96,7 +96,7 @@ module.exports = function(server, opts) {
     });
   
 
-  wss.on('connection', function connection(request, ws) {
+  wss.on('connection', function connection(ws) {
     // let url = require('url').parse(request.httpRequest);
     // console.log(url);
 
