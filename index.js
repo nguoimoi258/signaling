@@ -80,16 +80,19 @@ module.exports = function(server, opts) {
           //let token = info.req.headers.token;
           
           let token = info.req.url.split('=')[1];
-          console.log("token", token);
+          console.log("token: ", token);
           if(!token){
               cb(false,401,'Unauthorized');
+              console.log('err1');
           } else {
               jwt.verify(token, config.JWT_SECRETKEY, (err, decoded) => {
                   if(err){
                       cb(false, 401, 'Unauthorized');
+                      console.log('err2');
                   } else {
                       info.req.user = decoded;
                       cb(true);
+                      console.log('ok');
                   }
               })
             }
