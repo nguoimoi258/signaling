@@ -111,7 +111,7 @@ module.exports = function(server, opts) {
   });
 
   wss.on('connection', function connection(request, ws) {
-    let url = url.parse(request.url).pathname;
+    let url = require('url').parse(request.httpRequest.url);
     console.log(url);
 
     var peer = board.connect();

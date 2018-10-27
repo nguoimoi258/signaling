@@ -8,7 +8,7 @@ var token = jwt.sign({name: 'iostreamer'}, config.JWT_SECRETKEY, {
     expiresIn: 15 * 24* 60 * 60 * 1000 // 15 days 
 })
 var str = "/?token=TOKEN";
-var ws = new WebSocket(config.SIGNALING_URL+str, {
+var ws = new WebSocket(config.SIGNALING_URL, {
     headers: {
         token: token
     }
