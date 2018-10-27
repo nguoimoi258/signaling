@@ -111,8 +111,8 @@ module.exports = function(server, opts) {
     // ws.on('message', function incoming(message) {
     //   console.log('received: %s', message);
     //   });
-    console.log('new client connect to server');
-    ws.send('messeage from server');
+    // console.log('new client connect to server');
+    // ws.send('messeage from server');
     //
 
     ws.on('message', peer.process);
