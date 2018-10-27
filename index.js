@@ -76,23 +76,23 @@ module.exports = function(server, opts) {
           server: server,
           autoAcceptConnections : false,
           // middleware vertify jwt
-          verifyClient: (info, cb) => {
-            console.log("info: ",info)
-            let token = info.req.headers.token;
-            console.log("info.req: ",info.req.query);
-            if(!token){
-                cb(false,401,'Unauthorized');
-            } else {
-                jwt.verify(token, config.JWT_SECRETKEY, (err, decoded) => {
-                    if(err){
-                        cb(false, 401, 'Unauthorized');
-                    } else {
-                        info.req.user = decoded;
-                        cb(true);
-                    }
-                })
-            }
-        } 
+        //   verifyClient: (info, cb) => {
+        //     console.log("info: ",info)
+        //     let token = info.req.headers.token;
+        //     console.log("info.req: ",info.req.query);
+        //     if(!token){
+        //         cb(false,401,'Unauthorized');
+        //     } else {
+        //         jwt.verify(token, config.JWT_SECRETKEY, (err, decoded) => {
+        //             if(err){
+        //                 cb(false, 401, 'Unauthorized');
+        //             } else {
+        //                 info.req.user = decoded;
+        //                 cb(true);
+        //             }
+        //         })
+        //     }
+        // } 
     });
   
   wss.on('request', function(req) {
