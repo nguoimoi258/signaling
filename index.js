@@ -97,7 +97,7 @@ module.exports = function(server, opts) {
   
     wss.on('request', function(req) {
       // Parse the requested URL:
-      let url = require('url').parse(req.httpRequest.url);
+      let url = require('url').parse(req.httpRequest);
       console(url);
     // // Assume that the token is passed as path:
     // // ws://url/TOKEN
