@@ -95,23 +95,9 @@ module.exports = function(server, opts) {
         // } 
     });
   
-    wss.on('request', function(req) {
-      // Parse the requested URL:
-      let url = require('url').parse(req.httpRequest);
-      console(url);
-    // // Assume that the token is passed as path:
-    // // ws://url/TOKEN
-    // let token = url.pathname.substring(1); // .substring(1) to strip off the leading `/`
-  
-    // // Validate token (implementation-dependent):
-    // if (! isValidToken(token)) return req.reject();
-  
-    // // Accept the request.
-    // return req.accept();
-  });
 
   wss.on('connection', function connection(request, ws) {
-    let url = require('url').parse(request.httpRequest.url);
+    let url = require('url').parse(request.httpRequest);
     console.log(url);
 
     var peer = board.connect();
