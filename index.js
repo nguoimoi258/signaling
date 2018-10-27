@@ -74,6 +74,7 @@ module.exports = function(server, opts) {
   var WebSocketServer = require('ws').Server;
   var wss = new WebSocketServer({ 
           server: server,
+          autoAcceptConnections : false,
           // middleware vertify jwt
           verifyClient: (info, cb) => {
             console.log("info: ",info)
@@ -94,6 +95,21 @@ module.exports = function(server, opts) {
         } 
     });
   
+  wss.on('request', function(req) {
+    // Parse the requested URL:
+    let url = require('url').parse(req.httpRequest.url);
+    console.log(url);
+    // // Assume that the token is passed as path:
+    // // ws://url/TOKEN
+    // let token = url.pathname.substring(1); // .substring(1) to strip off the leading `/`
+  
+    // // Validate token (implementation-dependent):
+    // if (! isValidToken(token)) return req.reject();
+  
+    // // Accept the request.
+    // return req.accept();
+  });
+
   wss.on('connection', function connection(ws) {
     var peer = board.connect();
 
@@ -107,6 +123,7 @@ module.exports = function(server, opts) {
   
     ws.send('messeage from server');
     //
+
     ws.on('message', peer.process);
     peer.on('data', function(data) {
       if (ws.readyState === 1) {
