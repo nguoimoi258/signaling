@@ -73,8 +73,8 @@ module.exports = function(server, opts) {
   var connections = [];
   var WebSocketServer = require('ws').Server;
   var wss = new WebSocketServer({ 
-          server: server,
-          path: '?token=TOKEN'
+          httpServer: server,
+         
           // middleware vertify jwt
         //   verifyClient: (info, cb) => {
         //     console.log("info: ",info)
@@ -95,10 +95,10 @@ module.exports = function(server, opts) {
         // } 
     });
   
-  wss.on('request', function(req) {
-    // Parse the requested URL:
-    let url = url.parse(request.url).pathname;
-    console.log(url);
+    wss.on('request', function(req) {
+      // Parse the requested URL:
+      let url = require('url').parse(req.httpRequest.url);
+      console(url);
     // // Assume that the token is passed as path:
     // // ws://url/TOKEN
     // let token = url.pathname.substring(1); // .substring(1) to strip off the leading `/`
