@@ -77,9 +77,8 @@ module.exports = function(server, opts) {
          
           // middleware vertify jwt
           verifyClient: (info, cb) => {
-            console.log("info.origin: ",info.origin)
-            let token = info.req.headers.token;
-            console.log("info.req: ",info.req);
+            let token = info.req.url;
+            console.log("info.url: ", token);
             if(!token){
                 cb(false,401,'Unauthorized');
             } else {
@@ -97,9 +96,7 @@ module.exports = function(server, opts) {
   
 
   wss.on('connection', function connection(ws) {
-    // let url = require('url').parse(request.httpRequest);
-    // console.log(url);
-
+   
     var peer = board.connect();
 
     // add the socket to the connection list
