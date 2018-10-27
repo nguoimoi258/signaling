@@ -75,25 +75,25 @@ module.exports = function(server, opts) {
   var wss = new WebSocketServer({ 
           server: server,
          
-          // middleware vertify jwt
-          verifyClient: (info, cb) => {
-            //let token = info.req.headers.token;
+        // middleware vertify jwt
+        // verifyClient: (info, cb) => {
+        //   //let token = info.req.headers.token;
 
-            let token = info.req.url.split('=')[1];
-          
-            if(!token){
-                cb(false,401,'Unauthorized');
-            } else {
-                jwt.verify(token, config.JWT_SECRETKEY, (err, decoded) => {
-                    if(err){
-                        cb(false, 401, 'Unauthorized');
-                    } else {
-                        info.req.user = decoded;
-                        cb(true);
-                    }
-                })
-            }
-        } 
+        //   let token = info.req.url.split('=')[1];
+        
+        //   if(!token){
+        //       cb(false,401,'Unauthorized');
+        //   } else {
+        //       jwt.verify(token, config.JWT_SECRETKEY, (err, decoded) => {
+        //           if(err){
+        //               cb(false, 401, 'Unauthorized');
+        //           } else {
+        //               info.req.user = decoded;
+        //               cb(true);
+        //           }
+        //       })
+        //     }
+        //   } 
     });
   
 
