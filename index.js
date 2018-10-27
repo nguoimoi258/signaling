@@ -77,8 +77,12 @@ module.exports = function(server, opts) {
          
           // middleware vertify jwt
           verifyClient: (info, cb) => {
-            let token = info.req.url;
-            console.log("info.url: ", token);
+            let token = info.req.headers.token;
+
+            let token2 = info.req.url.split('=')[1];
+            console.log('token: ', token);
+            console.log("info.url: ", info.req.url);
+            console.log('token from url', token2);
             if(!token){
                 cb(false,401,'Unauthorized');
             } else {
